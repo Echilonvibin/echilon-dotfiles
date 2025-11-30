@@ -22,7 +22,7 @@ CONFIG_TARGETS=(
     "rofi"
     "kitty"
     "fish"
-    "starship"
+    "starship.toml"
     "fastfetch"
 )
 
