@@ -68,5 +68,5 @@ You must be running an **Arch-based Linux distribution** and have basic developm
 Open your terminal and use `git clone` to download the entire repository:
 
 ```bash
-git clone [https://github.com/Echilonvibin/echilon-dotfiles.git](https://github.com/Echilonvibin/echilon-dotfiles.git)
+git clone https://github.com/Echilonvibin/echilon-dotfiles.git](https://github.com/Echilonvibin/echilon-dotfiles.git
 cd ./echilon-dotfiles
