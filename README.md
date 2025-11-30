@@ -91,8 +91,8 @@ Grant the script executable permission and run it. The script will handle everyt
 and deploying the configuration files.
 
 ```
-chmod +x install-dots.sh
-./install-dots.sh
+chmod +x install.sh
+./install.sh
 ```
 
 ⚠️ Important Notes
@@ -130,11 +130,11 @@ Step 2: Run the Uninstaller
 ```
 Grant permissions and execute the script.
 
-chmod +x uninstall-dots.sh
+chmod +x uninstall.sh
 ```
 
 ```
-./uninstall-dots.sh
+./uninstall.sh
 ```
 
 What the Uninstaller Does:
