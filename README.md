@@ -3,7 +3,7 @@ this is my dot files...vibe coded this, may be broken. We'll see.
 
 
 # This downloads the script which will install this from this github
-wget https://raw.githubusercontent.com/Gamma195/echilon-dotfiles/main/install.sh
+```wget https://raw.githubusercontent.com/Gamma195/echilon-dotfiles/main/install.sh```
 
 make it executable, so type the below
 chmod +
@@ -26,7 +26,8 @@ After the script finishes, a few steps are required for a perfect setup:
 
 This is for the keybinds for rofi, if you don't need/want it, then you can ignore this
 Grant Script Permissions: Ensure the Hyprland scripts (used for your Rofi keybinds menu) can execute:
-chmod +x ~/.config/hypr/Scripts/keyhints
-chmod +x ~/.config/hypr/Scripts/show-keyhints.sh
+```chmod +x ~/.config/hypr/Scripts/keyhints```
+
+```chmod +x ~/.config/hypr/Scripts/show-keyhints.sh```
 
 Reboot/Log In: Log out of the current session. At the Display Manager (Login Screen, e.g., GDM, LightDM, SDDM), select the Hyprland session and log back in.
