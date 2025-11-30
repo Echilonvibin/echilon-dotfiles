@@ -122,19 +122,10 @@ At your login manager (SDDM, GDM, etc.), ensure you select the Hyprland session 
 
 If you need to revert to your previous setup, use the uninstall-dots.sh script.
 
-Step 1: Download the Uninstaller
+Step 1. Run the installer (comes with the clone of the repo)
 
-Download the uninstaller script:
-
-```
-wget [https://raw.githubusercontent.com/Gamma195/echilon-dotfiles/main/uninstall-dots.sh](https://raw.githubusercontent.com/Gamma195/echilon-dotfiles/main/uninstall-dots.sh)
-``` 
-
-
-Step 2: Run the Uninstaller
-```
 Grant permissions and execute the script.
-
+```
 chmod +x uninstall.sh
 ```
 
