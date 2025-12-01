@@ -27,6 +27,8 @@ PACKAGES=(
     xorg-xwayland  # X11 compatibility layer
     brightnessctl  # Screen control
     pavucontrol    # PulseAudio/PipeWire volume control
+    kate           # KDE Advanced Text Editor
+    gedit          # GNOME Text Editor
 )
 
 REPO_DIR=$(pwd)
@@ -56,6 +58,13 @@ deploy_configs() {
         SOURCE_PATH="$REPO_DIR/$component"
         TARGET_PATH="$CONFIG_DIR/$component"
         
+        # Ensure the source directory (in the repo) exists before attempting to link
+        if [ ! -d "$SOURCE_PATH" ]; then
+            echo "Error: Source configuration directory '$component' not found in the repository."
+            echo "Please ensure the path '$SOURCE_PATH' is correct."
+            continue # Skip deployment for this component
+        fi
+
         if [ -d "$TARGET_PATH" ] || [ -L "$TARGET_PATH" ]; then
             TIMESTAMP=$(date +%Y%m%d%H%M%S)
             echo "Existing $component config found. Creating backup: $TARGET_PATH.bak.$TIMESTAMP"
@@ -70,8 +79,17 @@ deploy_configs() {
 
 # Set executable permissions for scripts
 set_permissions() {
-    echo "Setting execution permissions for scripts..."
-    chmod +x "$CONFIG_DIR/hypr/scripts/"*
+    SCRIPTS_PATH="$CONFIG_DIR/hypr/scripts"
+    
+    # Check if the scripts directory exists before trying to run chmod
+    if [ -d "$SCRIPTS_PATH" ]; then
+        echo "Setting execution permissions for scripts..."
+        # Use find to be robust against hidden files and ensure we only target files
+        find "$SCRIPTS_PATH" -type f -exec chmod +x {} \;
+    else
+        echo "Warning: Hyprland scripts directory '$SCRIPTS_PATH' not found."
+        echo "Ensure the 'hypr/scripts' folder exists in your dotfiles repository."
+    fi
 }
 
 # --- Main Installation Flow ---
