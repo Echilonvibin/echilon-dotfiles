@@ -22,7 +22,6 @@ PACKAGES=(
     
     # Example dependencies (adjust as needed)
     dunst          # Notification daemon
-    waybar         # Status bar (often used, though you use noctalia-shell-git)
     swaybg         # Simple wallpaper utility (used for setting wallpapers)
     xorg-xwayland  # X11 compatibility layer
     brightnessctl  # Screen control
