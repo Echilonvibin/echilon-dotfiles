@@ -107,7 +107,6 @@ echo "The installed software packages (Hyprland, Kitty, Rofi, etc.) were NOT aut
 echo "If you wish to remove them, please use the following commands:"
 echo ""
 echo "--- Official/Common Packages (Requires sudo) ---"
-echo "sudo pacman -Rns hyprland rofi nemo vivaldi code kvantum qt5-base qt6-base gtk3 grim slurp wayland-protocols wget imagemagick fish kitty fastfetch"
 echo ""
 echo "--- AUR Packages (Requires yay) ---"
 echo "yay -Rns noctalia-shell-git missioncenter yt-dlp warehouse linux-wallpaperengine-git upscaler video-downloader"
