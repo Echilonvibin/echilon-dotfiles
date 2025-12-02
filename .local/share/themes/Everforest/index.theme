@@ -1,0 +1,12 @@
+Type=X-GNOME-Metatheme
+[Desktop Entry]
+Name=Everforest-BL-MB-Dark
+Comment=An Flat Gtk+ theme based on Elegant Design
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Everforest-BL-MB-Dark
+MetacityTheme=Everforest-BL-MB-Dark
+IconTheme=Tela-circle-Dark
+CursorTheme=Everforest-BL-MB-cursors
+ButtonLayout=close,minimize,maximize:menu

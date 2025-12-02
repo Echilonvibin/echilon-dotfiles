@@ -1,0 +1,12 @@
+Type=X-GNOME-Metatheme
+[Desktop Entry]
+Name=Osaka-BL-MB-Dark
+Comment=An Flat Gtk+ theme based on Elegant Design
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Osaka-BL-MB-Dark
+MetacityTheme=Osaka-BL-MB-Dark
+IconTheme=Tela-circle-Dark
+CursorTheme=Osaka-BL-MB-cursors
+ButtonLayout=close,minimize,maximize:menu

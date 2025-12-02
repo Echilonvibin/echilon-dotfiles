@@ -1,0 +1,12 @@
+Type=X-GNOME-Metatheme
+[Desktop Entry]
+Name=Catppuccin-BL-MB-Dark
+Comment=An Flat Gtk+ theme based on Elegant Design
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Catppuccin-BL-MB-Dark
+MetacityTheme=Catppuccin-BL-MB-Dark
+IconTheme=Tela-circle-Dark
+CursorTheme=Catppuccin-BL-MB-cursors
+ButtonLayout=close,minimize,maximize:menu

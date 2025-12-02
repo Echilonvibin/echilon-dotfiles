@@ -1,0 +1,12 @@
+Type=X-GNOME-Metatheme
+[Desktop Entry]
+Name=Kanagawa-BL-MB-Dark
+Comment=An Flat Gtk+ theme based on Elegant Design
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Kanagawa-BL-MB-Dark
+MetacityTheme=Kanagawa-BL-MB-Dark
+IconTheme=Tela-circle-Dark
+CursorTheme=Kanagawa-BL-MB-cursors
+ButtonLayout=close,minimize,maximize:menu

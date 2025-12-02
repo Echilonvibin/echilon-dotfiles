@@ -1,0 +1,12 @@
+Type=X-GNOME-Metatheme
+[Desktop Entry]
+Name=Nightfox-BL-MB-Dark-Carbonfox
+Comment=An Flat Gtk+ theme based on Elegant Design
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Nightfox-BL-MB-Dark-Carbonfox
+MetacityTheme=Nightfox-BL-MB-Dark-Carbonfox
+IconTheme=Tela-circle-Dark
+CursorTheme=Nightfox-BL-MB-cursors
+ButtonLayout=close,minimize,maximize:menu
