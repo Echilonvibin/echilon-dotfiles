@@ -27,7 +27,7 @@ PACKAGES=(
     slurp          # Screenshot selector for region
     hyprshot       # Screenshot selector region - this is a standalone app
     firefox        # Browser
-    starship       # custom configuration for fish
+    starship-git       # custom configuration for fish
 )
 
 
