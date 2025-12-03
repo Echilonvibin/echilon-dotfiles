@@ -174,15 +174,16 @@ Navigate to the repository directory if you are not already there, grant executi
 ```bash
 chmod +x uninstall.sh
 ./uninstall.sh
-
+```
 
 #Manually Remove Software (Optional)
 
 If you wish to completely remove the installed software, you must run a separate command using your package manager.
 
 # Example command to remove core packages (adjust the list as needed)
+```
 yay -R nautilus noctalia-shell-git upscayl-bin video-downloader gnome-calculator loupe gcolor3 protonplus mission-center
-
+```
 ---
 
 
