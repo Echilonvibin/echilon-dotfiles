@@ -47,7 +47,6 @@ PACKAGES=(
     kitty-shell-integration   # Kitty terminal shell integration
     kitty-terminfo            # Terminfo for Kitty
     xdg-desktop-portal-gtk    # GTK implementation of xdg-desktop-portal
-    xdg-desktop-portal-gnome  # GNOME implementation of xdg-desktop-portal
     xdg-user-dirs             # Manage user directories
     thunar                    # File Manager  
     thunar-media-tags-plugin  # Media tags plugin for Thunar
