@@ -70,6 +70,7 @@ PACKAGES=(
     cava                      # Audio visualizer
     flatpak                   # Application sandbox and package manager
     noctalia-shell            # Bar from Noctalia
+    gnome-disk-utility        # Disk Management
 )
 
 OPTIONALPKG=(
