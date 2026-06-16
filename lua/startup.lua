@@ -20,7 +20,9 @@ local exec_once = {
     "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 || /usr/libexec/polkit-gnome-authentication-agent-1",
     "gnome-keyring-daemon --start --components=secrets",
     "hypridle",
-    "easyeffects",
+    "sh -c 'sleep 3 && easyeffects --gapplication-service'",
+    "sh -c 'sleep 3 && /usr/lib/xdg-desktop-portal'",
+    "sh -c 'sleep 3 && /usr/lib/xdg-desktop-portal-hyprland'",
 }
 
 local nvidia_exec_once_optional = {
