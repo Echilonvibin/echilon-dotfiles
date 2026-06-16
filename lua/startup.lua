@@ -19,7 +19,6 @@ local exec_once = {
     "qs -c noctalia-shell",
     "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 || /usr/libexec/polkit-gnome-authentication-agent-1",
     "gnome-keyring-daemon --start --components=secrets",
-    "hypridle",
     "sh -c 'sleep 3 && easyeffects --gapplication-service'",
     "sh -c 'sleep 3 && /usr/lib/xdg-desktop-portal'",
     "sh -c 'sleep 3 && /usr/lib/xdg-desktop-portal-hyprland'",
