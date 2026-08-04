@@ -23,17 +23,9 @@ This script, is now released. It is no longer in beta state. This project origin
 
 ### Lua Update
 
-The initial .lua files have been added if you want to start using them. For now you need to manually replace your .conf files with the files in the new lua folder.
+The Hyprland configuration now uses Lua-based. The old .conf-based structure is no longer used.
 
-Make sure you are on Noctalia-shell version 4.7.7 before attempting to use the lua files.
-
-After running the script replace the .conf files with the new .lua files, reboot, enjoy.
-
-Until Noctalia is completely updated you will have to manually change the color codes in the noctalia-colors.lua file in the ~/.config/hypr/noctalia to match your color-scheme for window borders.
-
-NVIDIA Users: On line 32 of the startup.lua change local enable_nvidia_optional = false to local enable_nvidia_optional = true
-
-For the browser script to work you will have to set it as executable in the ~/.config/hypr/Scripts folder. 
+We have also switched over to Noctalia v5 beta.
 
 ### What this does
 
@@ -41,7 +33,7 @@ This script turns a fresh Arch + Hyprland setup into the minimaLinux desktop by 
 
 ### Nvidia Users
 
-Once in the system open ~/.config/hypr/startup.conf and uncomment the Nvidia section then reboot.
+NVIDIA Users: On line 32 of the startup.lua change local enable_nvidia_optional = false to local enable_nvidia_optional = true
 
 ### Credits
 

@@ -61,6 +61,11 @@ if [ ! -d "$REPO_DIR/.config" ]; then
     exit 1
 fi
 
+if [ ! -d "$REPO_DIR/.config/hypr" ]; then
+    echo "ERROR: Could not find the Hyprland config directory inside your repository at '$REPO_DIR/.config/hypr'."
+    exit 1
+fi
+
 # --- Pre-flight confirmation ---
 echo "This script will install custom dot-files for Hyprland and the Chaotic AUR. Use only with fresh install of Hyprland (Vanilla Arch Linux only). Use at your own risk."
 while true; do
@@ -822,17 +827,27 @@ deploy_configs() {
     # Back up any existing configs that would be overwritten
     BACKUP_TIMESTAMP=$(date +%s)
     echo "Backing up existing configuration files..."
+
     for item in "$CONFIG_SOURCE_ROOT"/*; do
         name=$(basename "$item")
         target="$CONFIG_DIR/$name"
+        if [ "$name" = "hypr" ]; then
+            continue
+        fi
+
         if [ -e "$target" ] || [ -L "$target" ]; then
             echo "  -> Backing up: $name to $name.bak.$BACKUP_TIMESTAMP"
             mv "$target" "$CONFIG_DIR/$name.bak.$BACKUP_TIMESTAMP"
         fi
     done
-    
-    # Copy all contents from repo/.config to ~/.config
-    echo "Copying all configuration files from $CONFIG_SOURCE_ROOT to $CONFIG_DIR..."
+
+    if [ -e "$CONFIG_DIR/hypr" ] || [ -L "$CONFIG_DIR/hypr" ]; then
+        echo "  -> Backing up: hypr to hypr.bak.$BACKUP_TIMESTAMP"
+        mv "$CONFIG_DIR/hypr" "$CONFIG_DIR/hypr.bak.$BACKUP_TIMESTAMP"
+    fi
+
+    # Copy all configuration files from repo/.config to ~/.config
+    echo "Copying configuration files from $CONFIG_SOURCE_ROOT to $CONFIG_DIR..."
     cp -rf "$CONFIG_SOURCE_ROOT"/* "$CONFIG_DIR"/
     
     if [ $? -eq 0 ]; then
@@ -1239,7 +1254,7 @@ echo "Proceeding with post-install configuration..."
 echo "--------------------------------------------------------"
 
 # Refresh and upgrade system packages before AUR installs
-echo "Updating system packages before installing noctalia-shell and noctalia-qs..."
+echo "Updating system packages before installing noctalia-git..."
 sudo pacman -Syu --noconfirm
 
 if [ $? -ne 0 ]; then
@@ -1247,12 +1262,12 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Install noctalia-shell and noctaliia-qs via yay
-echo "Installing noctalia-shell and noctaliia-qs via yay..."
-sudo -u "$ACTUAL_USER" yay -S --noconfirm noctalia-shell noctalia-qs
+# Install noctalia-git via yay
+echo "Installing noctalia-git via yay..."
+sudo -u "$ACTUAL_USER" yay -S --noconfirm noctalia-git
 
 if [ $? -ne 0 ]; then
-    echo "Warning: Failed to install noctalia-shell and/or noctaliia-qs."
+    echo "Warning: Failed to install noctalia-git."
 fi
 
 # Browser installation
