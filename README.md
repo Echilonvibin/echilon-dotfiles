@@ -39,7 +39,7 @@ NVIDIA Users: On line 32 of the startup.lua change local enable_nvidia_optional 
 
 The primary application bar (`noctalia-shell`) is based on the exceptional work by **Noctalia**. All credit for the bar's design and functionality goes to them:
 
-> [**noctalia-dev/noctalia-shell**](https://github.com/noctalia-dev/noctalia-shell)
+> [**noctalia-dev/noctalia-shell**](https://noctalia.dev/)
 
 ### Community
 
