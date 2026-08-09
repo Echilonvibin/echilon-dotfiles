@@ -20,6 +20,7 @@ local exec_once = {
     "gnome-keyring-daemon --start --components=secrets",
     "systemctl --user start --ignore-dependencies xdg-desktop-portal-hyprland.service xdg-desktop-portal.service",
     "noctalia",
+    "wl-clip-persist --clipboard regular",
     "sh -c 'sleep 3 && easyeffects --gapplication-service'",
 }
 

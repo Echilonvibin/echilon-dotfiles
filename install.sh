@@ -316,6 +316,7 @@ PACKAGES=(
     pavucontrol               # PulseAudio/PipeWire volume control
     playerctl                 # Media player controller
     wlsunset                  # Nightlight for quickshell
+    wl-clip-persist           # Clipboard persistence
     fish                      # Shell
     fastfetch                 # System Info Display
     satty                     # Screenshot annotation tool
