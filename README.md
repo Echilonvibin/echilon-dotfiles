@@ -11,11 +11,91 @@
   </p>
 </details>
 
-## ⚠️ Important Warnings & Disclaimer
 
-### Fresh Install Requirement
+### Fresh Arch Install Requirement
 
 **This configuration is tailored for a FRESH INSTALL of VANILLA ARCH LINUX using the archinstall script with the Hyprland profile.** We strongly advise against attempting this installation on derivative distributions (such as CachyOS, Manjaro, etc.) as package and configuration conflicts are highly likely. This includes packages you could install yourself, through Arch's repo, and a few AUR packages. This will install the chaotic AUR, the only AUR exclusive package that is installed, is the Noctalia bar itself. 
+
+## 🚀 Arch Installation Guide
+
+### Prerequisites
+
+```bash
+sudo pacman -S git
+```
+
+### Step 1: Clone the Repository
+
+Open your terminal and clone the repository using `git`:
+
+```bash
+git clone https://github.com/Echilonvibin/minimaLinux.git
+```
+
+### Step 2: Change directory to the repo
+```bash
+cd ./minimaLinux
+```
+
+### Step 3: Make the install script executable
+
+```bash
+chmod +x ./install.sh
+```
+
+### Step 4: Run the install script, YIPPE
+```bash
+sudo ./install.sh
+```
+
+### Fedora Installation 
+
+<details>
+  <summary align="center"><b>📸 Click to view Screenshot</b></summary>
+  <p align="center">
+    <img src="Fedora.png" height="350" style="vertical-align: middle;">
+  </p>
+</details>
+
+We recommend using a fresh install of Fedora using the Fedora Everything install ISO with package selections seen in the above screenshot.
+
+The Fedora installer will enable the following COPR repositories to provide additional packages needed for the setup:
+
+- [lionheartp/Hyprland](https://copr.fedorainfracloud.org/coprs/lionheartp/Hyprland/)
+- [leloubil/wl-clip-persist](https://copr.fedorainfracloud.org/coprs/leloubil/wl-clip-persist/)
+- [tofik/nwg-shell](https://copr.fedorainfracloud.org/coprs/tofik/nwg-shell/)
+
+We are also using [Satty](https://github.com/gabm/Satty) for screen annotations. 
+
+Credit goes to these developers for their excellent work.
+
+To install on Fedora, follow these steps:
+
+1. Install Git:
+   ```bash
+   sudo dnf install git -y
+   ```
+
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/Echilonvibin/minimaLinux.git
+   ```
+
+3. Change into the project directory:
+   ```bash
+   cd minimaLinux
+   ```
+
+4. Make the Fedora installer executable:
+   ```bash
+   chmod +x ./fedora_install.sh
+   ```
+
+5. Run the Fedora installer:
+   ```bash
+   sudo ./fedora_install.sh
+   ```
+
 
 ### Development Status
 
@@ -29,15 +109,17 @@ We have also switched over to Noctalia v5 beta.
 
 ### What this does
 
-This script turns a fresh Arch + Hyprland setup into the minimaLinux desktop by installing required packages, dropping useless ones and adding preconfigured streamlined dotfiles.
+This script turns a fresh Arch + Hyprland or Fedora setup into the minimaLinux desktop by installing required packages, dropping useless ones and adding preconfigured streamlined dotfiles.
 
 ### Nvidia Users
 
 NVIDIA Users: On line 32 of the startup.lua change local enable_nvidia_optional = false to local enable_nvidia_optional = true
 
+The Fedora script will prompt the user and update the startup.lua as needed.
+
 ### Credits
 
-The primary application bar (`noctalia-shell`) is based on the exceptional work by **Noctalia**. All credit for the bar's design and functionality goes to them:
+The primary application bar (`noctalia`) is based on the exceptional work by **Noctalia**. All credit for the bar's design and functionality goes to them:
 
 > [**noctalia-dev/noctalia-shell**](https://noctalia.dev/)
 
@@ -76,35 +158,7 @@ These dotfiles are provided strictly as a **template**. You **must** review and 
 
 ---
 
-## 🚀 Installation Guide
 
-### Prerequisites
-
-You must be running an **Arch-based Linux distribution** and have basic development tools installed (`git` is required for cloning).
-
-### Step 1: Clone the Repository
-
-Open your terminal and clone the repository using `git`:
-
-```bash
-git clone https://github.com/Echilonvibin/minimaLinux.git
-```
-
-### Step 2: Change directory to the repo
-```bash
-cd ./minimaLinux
-```
-
-### Step 3: Make the install script executable
-
-```bash
-chmod +x ./install.sh
-```
-
-### Step 4: Run the install script, YIPPE
-```bash
-sudo ./install.sh
-```
 
 ### Additional Install Notes
 
@@ -122,4 +176,4 @@ If you need to revert the changes, navigate to the repository directory and run:
 
 This will restore any backed-up config files found in `~/.config` to their previous state.
 
-> **Note:** Installed packages are **not** automatically removed. If you wish to uninstall them, you will need to do so manually via `pacman` or `yay`.
+> **Note:** Installed packages are **not** automatically removed. If you wish to uninstall them, you will need to do so manually via your package manager.
