@@ -30,7 +30,7 @@ local nvidia_exec_once_optional = {
 }
 
 -- Optional NVIDIA-specific tweaks. Keep false unless you explicitly want them.
-local enable_nvidia_optional = false
+local enable_nvidia_optional = true
 
 for _, item in ipairs(env) do
     local key, value = item:match("^([^,]+),(.+)$")
