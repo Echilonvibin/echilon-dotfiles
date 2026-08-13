@@ -85,6 +85,27 @@ while true; do
     esac
 done
 
+INSTALL_NVIDIA_OPTIONAL=0
+while true; do
+    echo ""
+    read -r -p "Are you using an Nvidia GPU? (y/n): " nvidia_choice
+    case "$nvidia_choice" in
+        y|Y|yes|YES)
+            INSTALL_NVIDIA_OPTIONAL=1
+            echo "Nvidia-specific Hyprland options will be enabled."
+            break
+            ;;
+        n|N|no|NO)
+            INSTALL_NVIDIA_OPTIONAL=0
+            echo "Skipping Nvidia-specific Hyprland options."
+            break
+            ;;
+        *)
+            echo "Please answer 'y' or 'n'."
+            ;;
+    esac
+done
+
 # --- Printer support selection ---
 INSTALL_PRINTER_SUPPORT=0
 while true; do
@@ -316,7 +337,6 @@ PACKAGES=(
     pavucontrol               # PulseAudio/PipeWire volume control
     playerctl                 # Media player controller
     wlsunset                  # Nightlight for quickshell
-    wl-clip-persist           # Clipboard persistence
     fish                      # Shell
     fastfetch                 # System Info Display
     satty                     # Screenshot annotation tool
@@ -892,6 +912,24 @@ PY
 
 
 
+update_hypr_startup_config() {
+    local startup_file="$ACTUAL_USER_HOME/.config/hypr/startup.lua"
+
+    if [ ! -f "$startup_file" ]; then
+        echo "Warning: Hyprland startup file '$startup_file' not found."
+        return 0
+    fi
+
+    if [ "$INSTALL_NVIDIA_OPTIONAL" -eq 1 ]; then
+        if grep -qF 'local enable_nvidia_optional = false' "$startup_file"; then
+            echo "Enabling Nvidia-specific Hyprland options in $startup_file..."
+            sed -i 's|^local enable_nvidia_optional = false$|local enable_nvidia_optional = true|' "$startup_file"
+        else
+            echo "Warning: Expected Nvidia toggle line not found in '$startup_file'."
+        fi
+    fi
+}
+
 # Set executable permissions for scripts
 set_permissions() {
     SCRIPTS_PATH="$ACTUAL_USER_HOME/.config/hypr/Scripts"
@@ -1285,6 +1323,9 @@ deploy_configs
 
 # Copy backup config files if available
 copy_backup_configs
+
+# Update Hyprland startup command for Nvidia
+update_hypr_startup_config
 
 # Create Thunar bookmarks
 create_thunar_bookmarks
