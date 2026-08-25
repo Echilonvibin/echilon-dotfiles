@@ -391,6 +391,8 @@ PACKAGES=(
     rocm-hip                  # ROCm HIP platform
     wl-clip-persist           # Clipboard persistence
     nwg-displays              # Display configuration tool
+    lm_sensors                # Hardware monitoring
+    nethogs                   # Network monitoring 
 )
 
 # Audio stack is selected at runtime.
