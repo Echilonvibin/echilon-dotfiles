@@ -411,7 +411,8 @@ PACKAGES=(
     gst-libav                 # Gstreamer Plugins
     qt6-websockets            # Websocket
     os-prober                 # Os prober for Grub
-    stb                       # Build Package for Noctalia V5  
+    stb                       # Build Package for Noctalia V5
+    imagemagick               # Image display
 )
 
 # Audio stack is selected at runtime.
