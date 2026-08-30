@@ -11,6 +11,11 @@
   </p>
 </details>
 
+### We are moving over to GitLab in 2 months. This will continue to receive updates during that timeframe, however, on October 20th this will then be archived. 
+
+## This is the link to the GitLab, where everything will be maintained! 
+
+https://gitlab.com/minimalinux/minimaDots
 
 ### Fresh Arch Install Requirement
 
