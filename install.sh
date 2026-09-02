@@ -413,6 +413,7 @@ PACKAGES=(
     os-prober                 # Os prober for Grub
     stb                       # Build Package for Noctalia V5
     imagemagick               # Image display
+    noctalia                  # Noctalia
 )
 
 # Audio stack is selected at runtime.
@@ -1303,12 +1304,12 @@ if [ $? -ne 0 ]; then
 fi
 
 # Install noctalia-git via yay
-echo "Installing noctalia-git via yay..."
-sudo -u "$ACTUAL_USER" yay -S --noconfirm noctalia-git
+#echo "Installing noctalia-git via yay..."
+#sudo -u "$ACTUAL_USER" yay -S --noconfirm noctalia-git
 
-if [ $? -ne 0 ]; then
-    echo "Warning: Failed to install noctalia-git."
-fi
+#if [ $? -ne 0 ]; then
+#    echo "Warning: Failed to install noctalia-git."
+#fi
 
 # Browser installation
 install_browser
