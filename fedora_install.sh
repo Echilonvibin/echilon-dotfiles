@@ -519,7 +519,7 @@ setup_noctalia_greeter() {
 
     local greetd_config_file="/etc/greetd/config.toml"
     local greeter_user="greeter"
-    local session_bin="/usr/bin/noctalia-greeter-session"
+    local session_bin="/usr/sbin/noctalia-greeter-session"
 
     if command -v noctalia-greeter-session >/dev/null 2>&1; then
         session_bin=$(command -v noctalia-greeter-session)
