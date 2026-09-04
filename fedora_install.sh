@@ -305,7 +305,7 @@ PACKAGES=(
     polkit                   # Polkit service used by the desktop and greeter
     accountsservice          # AccountsService for greeter avatars
     greetd                   # Login manager daemon for Noctalia Greeter
-    noctalia-greeter         # Noctalia login greeter for greetd
+    noctalia-greeter-git     # Noctalia login greeter for greetd
     hyprland                 # Ensure compositor package/session is present
     xdg-desktop-portal-hyprland # Hyprland portal backend
     xorg-x11-server-Xwayland # Xwayland support for Wayland sessions
@@ -519,7 +519,7 @@ setup_noctalia_greeter() {
 
     local greetd_config_file="/etc/greetd/config.toml"
     local greeter_user="greeter"
-    local session_bin="/usr/sbin/noctalia-greeter-session"
+    local session_bin="/usr/bin/noctalia-greeter-session"
 
     if command -v noctalia-greeter-session >/dev/null 2>&1; then
         session_bin=$(command -v noctalia-greeter-session)
