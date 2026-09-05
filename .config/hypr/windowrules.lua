@@ -1,7 +1,5 @@
 -- Float rules
-hl.window_rule({ match = { class = "^org\\.pulseaudio\\.pavucontrol$" },                  float = true })
 hl.window_rule({ match = { class = "^de\\.haeckerfelix\\.Shortwave$" },                   float = true })
-hl.window_rule({ match = { class = "^com\\.github\\.iwalton3\\.jellyfin-media-player$" }, float = true })
 hl.window_rule({ match = { class = "^Signal$" },                                          float = true })
 hl.window_rule({ match = { class = "^com\\.github\\.rafostar\\.Clapper$" },               float = true })
 hl.window_rule({ match = { class = "^app\\.drey\\.Warp$" },                               float = true })
@@ -12,7 +10,10 @@ hl.window_rule({ match = { class = "^io\\.github\\.alainm23\\.planify$" },      
 hl.window_rule({ match = { class = "^io\\.gitlab\\.theevilskeleton\\.Upscaler$" },        float = true })
 hl.window_rule({ match = { class = "^com\\.github\\.unrud\\.VideoDownloader$" },          float = true })
 hl.window_rule({ match = { class = "^io\\.gitlab\\.adhami3310\\.Impression$" },           float = true })
-hl.window_rule({ match = { class = "^io\\.missioncenter\\.MissionCenter$" },              float = true })
+hl.window_rule({ match = { class = "^io\\.missioncenter\\.MissionCenter$" },              float = true, size = "1290 950"})
+hl.window_rule({ match = { class = "^org\\.pulseaudio\\.pavucontrol$" },                  float = true, size = "1221 619", })
+hl.window_rule({ match = { title = "^File Operation Progress$" },                         float = true, size = "600 50", })
+hl.window_rule({ match = { class = "^xfce-polkit$" },                                     float = true, size = "600 50", })
 
 -- Idle inhibit rules
 hl.window_rule({ match = { class = "^(.*celluloid.*|.*mpv.*|.*vlc.*)$" },                                                                                            idle_inhibit = "fullscreen" })
