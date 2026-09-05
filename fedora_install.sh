@@ -305,13 +305,13 @@ PACKAGES=(
     polkit                   # Polkit service used by the desktop and greeter
     accountsservice          # AccountsService for greeter avatars
     greetd                   # Login manager daemon for Noctalia Greeter
-    noctalia-greeter-git     # Noctalia login greeter for greetd
+    noctalia-greeter-git         # Noctalia login greeter for greetd
     hyprland                 # Ensure compositor package/session is present
     xdg-desktop-portal-hyprland # Hyprland portal backend
     xorg-x11-server-Xwayland # Xwayland support for Wayland sessions
     mesa-dri-drivers         # OpenGL drivers (important on minimal installs/VMs)
     mesa-vulkan-drivers      # Vulkan drivers used by wlroots stack
-    hyprpolkitagent           # PolicyKit authentication agent
+    xfce-polkit               # PolicyKit authentication agent
     gnome-keyring             # Credential storage   
     pavucontrol               # PulseAudio/PipeWire volume control
     playerctl                 # Media player controller
@@ -392,7 +392,8 @@ PACKAGES=(
     wl-clip-persist           # Clipboard persistence
     nwg-displays              # Display configuration tool
     lm_sensors                # Hardware monitoring
-    nethogs                   # Network monitoring 
+    nethogs                   # Network monitoring
+    ImageMagick               # Image manipulation tools
 )
 
 # Audio stack is selected at runtime.
@@ -772,9 +773,9 @@ update_hypr_startup_config() {
 
     if grep -qF "$polkit_match" "$startup_file"; then
         echo "Updating Hyprland startup command in $startup_file..."
-        sed -i '/polkit-gnome-authentication-agent-1/c\    "systemctl --user start hyprpolkitagent.service",' "$startup_file"
-        if grep -qF '"systemctl --user start hyprpolkitagent.service",' "$startup_file"; then
-            echo "Hyprland polkit startup command updated successfully."
+        sed -i '/polkit-gnome-authentication-agent-1/c\    "sleep 1 \&\& \/usr\/libexec\/xfce-polkit",' "$startup_file"
+        if grep -qF '"sleep 1 && /usr/libexec/xfce-polkit",' "$startup_file"; then
+            echo "Hyprland xfce-polkit startup command updated successfully."
         else
             echo "Warning: Failed to update polkit startup command in '$startup_file'."
         fi
@@ -1038,6 +1039,10 @@ install_starship
 
 # Validate session essentials that otherwise cause greetd/Hyprland login issues
 post_install_hyprland_checks
+
+# Ensure Thunar remains the default file manager right before reboot
+sudo -u "$ACTUAL_USER" xdg-mime default thunar.desktop inode/directory
+sudo -u "$ACTUAL_USER" xdg-mime default thunar.desktop application/x-gnome-saved-search
 
 # Reboot confirmation
 echo ""
