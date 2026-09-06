@@ -4,14 +4,17 @@
   <img src="https://img.shields.io/badge/license-GPL--3.0-blue" alt="License">
 </p>
 
+<div align="center">
 <details>
-  <summary align="center"><b>▶️ Click to view Video Trailer</b></summary>
+  <summary><b>▶️ Click to view Video Trailer</b></summary>
+  <br>
   <p align="center">
-    <a href="https://www.youtube.com/watch?v=HJhm0aT3lNw">
-      <img src="https://img.youtube.com/vi/HJhm0aT3lNw/hqdefault.jpg" alt="Watch Trailer" height="200">
-    </a>
+
+![Video Trailer](trailer/trailer.mp4)
+
   </p>
 </details>
+</div>
 
 
 
