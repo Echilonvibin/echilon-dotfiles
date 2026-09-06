@@ -5,9 +5,11 @@
 </p>
 
 <details>
-  <summary align="center"><b>📸 Click to view Theme Screenshots</b></summary>
+  <summary align="center"><b>▶️ Click to view Video Trailer</b></summary>
   <p align="center">
-    <img src="Red.png" height="350" style="vertical-align: middle;"><img src="TokyoNight.png" height="350" style="vertical-align: middle;">
+    <a href="https://www.youtube.com/watch?v=HJhm0aT3lNw">
+      <img src="https://img.youtube.com/vi/HJhm0aT3lNw/hqdefault.jpg" alt="Watch Trailer" height="200">
+    </a>
   </p>
 </details>
 
@@ -106,7 +108,7 @@ This script, is now released. It is no longer in beta state. This project origin
 
 The Hyprland configuration now uses Lua-based. The old .conf-based structure is no longer used.
 
-We have also switched over to Noctalia v5 beta.
+We have also switched over to Noctalia v5.
 
 ### What this does
 
@@ -116,13 +118,13 @@ This script turns a fresh Arch + Hyprland or Fedora setup into the minimaLinux d
 
 NVIDIA Users: On line 32 of the startup.lua change local enable_nvidia_optional = false to local enable_nvidia_optional = true
 
-The Fedora script will prompt the user and update the startup.lua as needed.
+The script will prompt the user and update the startup.lua as needed.
 
 ### Credits
 
 The primary application bar (`noctalia`) is based on the exceptional work by **Noctalia**. All credit for the bar's design and functionality goes to them:
 
-> [**noctalia-dev/noctalia-shell**](https://noctalia.dev/)
+> [**noctalia-dev**](https://noctalia.dev/)
 
 ### Community
 
