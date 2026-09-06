@@ -330,6 +330,7 @@ done
 # Define the list of packages to install using pacman
 PACKAGES=(
     # Core Components
+    greetd                    # Login manager daemon for Noctalia Greeter
     polkit-gnome              # PolicyKit authentication agent
     gnome-keyring             # Credential storage  
     hyprlock                  # Locks screen, obviously. 
@@ -1237,6 +1238,51 @@ apply_dolby_pipewire_profile() {
     fi
 }
 
+setup_noctalia_greeter() {
+    echo -e "\n--- Noctalia Greeter Setup ---"
+
+    local greetd_config_file="/etc/greetd/config.toml"
+    local greeter_user="greeter"
+    local session_bin="/usr/bin/noctalia-greeter-session"
+
+    if command -v noctalia-greeter-session >/dev/null 2>&1; then
+        session_bin=$(command -v noctalia-greeter-session)
+    fi
+
+    if ! id -u "$greeter_user" >/dev/null 2>&1; then
+        echo "Creating greeter user '$greeter_user'..."
+        useradd -r -s /usr/bin/nologin -d /var/lib/noctalia-greeter "$greeter_user"
+    fi
+
+    echo "Preparing greeter state directory..."
+    mkdir -p /var/lib/noctalia-greeter
+    chown -R "$greeter_user:$greeter_user" /var/lib/noctalia-greeter
+
+    if [ -f "$greetd_config_file" ]; then
+        cp -a "$greetd_config_file" "$greetd_config_file.bak.$(date +%s)"
+    fi
+
+    echo "Writing greetd configuration to $greetd_config_file..."
+    mkdir -p /etc/greetd
+    cat > "$greetd_config_file" <<EOF
+[terminal]
+vt = 1
+
+[default_session]
+command = "$session_bin"
+user = "$greeter_user"
+EOF
+
+    if [ -x /usr/share/noctalia-greeter/setup_greetd_pam.sh ]; then
+        echo "Configuring greetd PAM integration for Noctalia Greeter..."
+        if ! bash /usr/share/noctalia-greeter/setup_greetd_pam.sh; then
+            echo "Warning: greetd PAM setup failed."
+        fi
+    else
+        echo "Warning: /usr/share/noctalia-greeter/setup_greetd_pam.sh was not found."
+    fi
+}
+
 # --- Main Installation Flow ---
 
 echo "Starting Hyprland Dotfiles Installation..."
@@ -1337,6 +1383,23 @@ set_permissions
 
 # Apply optional Dolby PipeWire profile
 apply_dolby_pipewire_profile
+
+# Install Noctalia Greeter via yay
+echo "Installing noctalia-greeter-git via yay..."
+sudo -u "$ACTUAL_USER" yay -S --noconfirm noctalia-greeter-git
+
+if [ $? -ne 0 ]; then
+    echo "ERROR: Failed to install noctalia-greeter-git. Aborting installation."
+    exit 1
+fi
+
+setup_noctalia_greeter
+
+echo "Disabling SDDM display manager..."
+sudo systemctl disable sddm
+
+echo "Enabling greetd display manager..."
+sudo systemctl enable greetd
 
 # Reboot confirmation
 echo ""
