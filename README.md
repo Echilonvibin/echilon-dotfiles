@@ -8,11 +8,7 @@
 <details>
   <summary><b>▶️ Click to view Video Trailer</b></summary>
   <br>
-  <p align="center">
-
-![Video Trailer](trailer/trailer.mp4)
-
-  </p>
+  <video src="https://raw.githubusercontent.com/Echilonvibin/minimaLinux/main/trailer/trailer.mp4" controls width="100%"></video>
 </details>
 </div>
 
