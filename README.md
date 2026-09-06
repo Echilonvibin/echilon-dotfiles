@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="https://img.shields.io/github/last-commit/Echilonvibin/minimaLinux" alt="Last Commit">
-  <img src="https://img.shields.io/github/commit-activity/w/Echilonvibin/minimaLinux" alt="Commit Activity">
+  <img src="https://img.shields.io/gitlab/contributors/minimalinux/minimaDots" alt="Contributors">
+  <img src="https://img.shields.io/gitlab/last-commit/minimalinux/minimaDots" alt="Last Commit">
   <img src="https://img.shields.io/badge/license-GPL--3.0-blue" alt="License">
 </p>
 
@@ -11,15 +11,11 @@
   </p>
 </details>
 
-### We are moving over to GitLab in 2 months. This will continue to receive updates during that timeframe, however, on October 20th this will then be archived. 
 
-## This is the link to the GitLab, where everything will be maintained! 
-
-https://gitlab.com/minimalinux/minimaDots
 
 ### Fresh Arch Install Requirement
 
-**This configuration is tailored for a FRESH INSTALL of VANILLA ARCH LINUX using the archinstall script with the Hyprland profile.** We strongly advise against attempting this installation on derivative distributions (such as CachyOS, Manjaro, etc.) as package and configuration conflicts are highly likely. This includes packages you could install yourself, through Arch's repo, and a few AUR packages. This will install the chaotic AUR, the only AUR exclusive package that is installed, is the Noctalia bar itself. 
+**This configuration is tailored for a FRESH INSTALL of VANILLA ARCH LINUX using the archinstall script with the Hyprland profile.** In archinstall choose NetworkManager (default backend) and leave sddm as the greeter. The script will replace sddm for Noctalia-Greeter. We strongly advise against attempting this installation on derivative distributions (such as CachyOS, Manjaro, etc.) as package and configuration conflicts are highly likely.
 
 ## 🚀 Arch Installation Guide
 
@@ -34,12 +30,12 @@ sudo pacman -S git
 Open your terminal and clone the repository using `git`:
 
 ```bash
-git clone https://github.com/Echilonvibin/minimaLinux.git
+git clone https://gitlab.com/minimalinux/minimaDots.git
 ```
 
 ### Step 2: Change directory to the repo
 ```bash
-cd ./minimaLinux
+cd ./minimaDots
 ```
 
 ### Step 3: Make the install script executable
@@ -83,12 +79,12 @@ To install on Fedora, follow these steps:
 
 2. Clone the repository:
    ```bash
-   git clone https://github.com/Echilonvibin/minimaLinux.git
+   git clone https://gitlab.com/minimalinux/minimaDots.git
    ```
 
 3. Change into the project directory:
    ```bash
-   cd minimaLinux
+   cd minimaDots
    ```
 
 4. Make the Fedora installer executable:
