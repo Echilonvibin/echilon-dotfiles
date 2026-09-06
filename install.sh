@@ -106,8 +106,31 @@ while true; do
     esac
 done
 
+DEFAULT_INSTALL=0
+while true; do
+    echo ""
+    read -r -p "Would you like to use the default installation options? (y/n): " default_install_choice
+    case "$default_install_choice" in
+        y|Y|yes|YES)
+            DEFAULT_INSTALL=1
+            echo "Using default installation options."
+            break
+            ;;
+        n|N|no|NO)
+            echo "Continuing with custom installation options."
+            break
+            ;;
+        *)
+            echo "Please answer 'y' or 'n'."
+            ;;
+    esac
+done
+
 # --- Printer support selection ---
 INSTALL_PRINTER_SUPPORT=0
+if [ "$DEFAULT_INSTALL" -eq 1 ]; then
+    echo "Default selection: skipping printer support."
+else
 while true; do
     echo ""
     read -r -p "Do you want printer support? (y/n): " printer_choice
@@ -127,9 +150,17 @@ while true; do
             ;;
     esac
 done
+fi
 
 # --- Gaming package selection ---
 GAMING_SELECTED_PACKAGES=()
+if [ "$DEFAULT_INSTALL" -eq 1 ]; then
+    GAMING_SELECTED_PACKAGES=(
+        steam mangohud protonplus wine winetricks protontricks lutris
+        heroic-games-launcher-bin prismlauncher
+    )
+    echo "Default gaming packages selected: ${GAMING_SELECTED_PACKAGES[*]}"
+else
 while true; do
     echo ""
     echo "Gaming Packages (select one or more):"
@@ -190,9 +221,14 @@ while true; do
 
     echo "Please try again with valid choices."
 done
+fi
 
 # --- Bluetooth package selection ---
 INSTALL_BLUETOOTH_PACKAGES=0
+if [ "$DEFAULT_INSTALL" -eq 1 ]; then
+    INSTALL_BLUETOOTH_PACKAGES=1
+    echo "Default selection: installing Bluetooth packages."
+else
 while true; do
     echo ""
     read -r -p "Do you want to install Bluetooth packages and enable the Bluetooth service? (y/n): " bluetooth_choice
@@ -212,9 +248,13 @@ while true; do
             ;;
     esac
 done
+fi
 
 # --- Audio mode selection ---
 AUDIO_MODE="easyeffects"
+if [ "$DEFAULT_INSTALL" -eq 1 ]; then
+    echo "Default selection: using EasyEffects setup."
+else
 while true; do
     echo ""
     echo "Audio setup option:"
@@ -243,10 +283,15 @@ while true; do
             ;;
     esac
 done
+fi
 
 # --- Audio/Video player selection ---
 AUDIO_VIDEO_PACKAGES=()
 INSTALL_VLC_PLUGINS_ALL=0
+if [ "$DEFAULT_INSTALL" -eq 1 ]; then
+    AUDIO_VIDEO_PACKAGES=(mpv)
+    echo "Default audio/video player selected: mpv"
+else
 while true; do
     echo ""
     echo "Audio/Video Players (select one or more):"
@@ -326,6 +371,7 @@ while true; do
     echo "Please try again with valid choices."
     AUDIO_VIDEO_PACKAGES=()
 done
+fi
 
 # Define the list of packages to install using pacman
 PACKAGES=(
@@ -415,6 +461,8 @@ PACKAGES=(
     stb                       # Build Package for Noctalia V5
     imagemagick               # Image display
     noctalia                  # Noctalia
+    papirus-icon-theme        # Papirus Icons
+    papirus-folders           # Papirus Folders
 )
 
 # Audio stack is selected at runtime.
@@ -752,6 +800,13 @@ prompt_optional_packages() {
 
     echo -e "\n--- Optional Packages Installation ---"
 
+    if [ "$DEFAULT_INSTALL" -eq 1 ]; then
+        SELECTED_OPTIONAL_PACKAGES=("${OPTIONALPKG[@]}")
+        append_unique_package SELECTED_OPTIONAL_PACKAGES luajit
+        echo "Default selection: installing all optional packages."
+        return 0
+    fi
+
     while true; do
         echo "Choose one or more optional packages:"
         menu_index=1
@@ -1049,7 +1104,14 @@ install_browser() {
 setup_ddcutil() {
     echo -e "\n--- Optional: ddcutil Setup ---"
     echo "ddcutil allows you to control monitor brightness via DDC/CI protocol."
-    read -r -p "Do you want to install and configure ddcutil? (y/N): " ddcutil_response
+    local ddcutil_response
+
+    if [ "$DEFAULT_INSTALL" -eq 1 ]; then
+        ddcutil_response="y"
+        echo "Default selection: configuring ddcutil."
+    else
+        read -r -p "Do you want to install and configure ddcutil? (y/N): " ddcutil_response
+    fi
     
     if [[ "$ddcutil_response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         echo "Setting up ddcutil..."
@@ -1289,7 +1351,12 @@ echo "Starting Hyprland Dotfiles Installation..."
 
 # Collect install choices before repository setup and package installation.
 prompt_optional_packages
-prompt_browser_installation
+if [ "$DEFAULT_INSTALL" -eq 1 ]; then
+    BROWSER_CHOICE=2
+    echo "Default browser selected: Brave."
+else
+    prompt_browser_installation
+fi
 
 # 0. Setup Chaotic-AUR Repository
 if ! setup_chaotic_aur; then
