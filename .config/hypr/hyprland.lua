@@ -18,7 +18,6 @@ require("windowrules")
 require("animations")
 require("themes.theme")
 
-local colors = require("noctalia.noctalia-colors")
 hl.config({
     dwindle = {
         preserve_split = true,
@@ -38,10 +37,8 @@ hl.config({
         force_zero_scaling = true,
     },
     general = {
-        col = colors.general.col,
         snap = {
             enabled = true,
         },
     },
-    group = colors.group,
 })
