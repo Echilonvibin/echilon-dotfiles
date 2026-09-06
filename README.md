@@ -8,7 +8,9 @@
 <details>
   <summary><b>▶️ Click to view Video Trailer</b></summary>
   <br>
-  <video src="https://raw.githubusercontent.com/Echilonvibin/minimaLinux/main/trailer/trailer.mp4" controls width="100%"></video>
+  <a href="https://www.youtube.com/watch?v=HJhm0aT3lNw">
+    <img src="https://img.youtube.com/vi/HJhm0aT3lNw/hqdefault.jpg" alt="Watch Trailer" height="250">
+  </a>
 </details>
 </div>
 
